@@ -271,3 +271,4 @@ if (config.runsInWidget || SILENT_RUN) {
 }
 
 Script.complete();
+console.log(`🏁 程式總耗時：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
