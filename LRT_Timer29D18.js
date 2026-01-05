@@ -290,7 +290,7 @@ if (config.runsInWidget || SILENT_RUN) {
   const debug = w.addText(
     `GPS0：${obj.COST_GPS_STATION1} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
-    `TOTAL：${TOTAL_COST}s` `GPST：${COST_GPS_STATION0} s 
+    `TOTAL：${TOTAL_COST}s  GPST：${COST_GPS_STATION0} s \n`
   );
   debug.font = Font.systemFont(11);
   debug.textColor = Color.gray();
