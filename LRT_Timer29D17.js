@@ -134,7 +134,7 @@ if (config.runsInWidget || SILENT_RUN) {
   w.backgroundColor = Color.white();
 
   // ✅【關鍵 2】Widget 點擊 → silent run
-  w.url = "scriptable:///run?scriptName=LRT_Timer29D17&silent=true";
+  //w.url = "scriptable:///run?scriptName=LRT_Timer29D17&silent=true";
 
   const title = w.addText("🚈 淡海輕軌列車動態");
   title.font = Font.boldSystemFont(22);
