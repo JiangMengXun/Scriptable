@@ -231,7 +231,7 @@ if (config.runsInWidget || SILENT_RUN) {
   w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
   
   Script.setWidget(w);
-
+  console.log(`🏁 程式總耗時0：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
   // ✅【關鍵 3】立刻結束，不跑任何 UI
   //Script.complete();
   return;
