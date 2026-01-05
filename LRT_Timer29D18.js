@@ -3,7 +3,7 @@
  *****************************************************************/
 const SCRIPT_NAME = "LRT_Timer29D18";
 const VERSION = "v3.3.1";
-
+const obj = {};
 // ===== Silent =====
 const SILENT_RUN = args.queryParameters.silent === "true";
 
@@ -26,6 +26,8 @@ const [loc, stations] = await Promise.all([
 
 const COST_GPS_STATION =
   ((Date.now() - tGPS_STATION) / 1000).toFixed(2);
+
+obj.COST_GPS_STATION = COST_GPS_STATION;
 
 console.log(`📍 GPS + Stations 耗時：${COST_GPS_STATION} 秒`);
 
@@ -278,8 +280,8 @@ if (config.runsInWidget || SILENT_RUN) {
   //footer1.font = Font.systemFont(14);
   //footer1.textColor = Color.black();
   //const COST_GPS_STATION1=((COST_GPS_STATION+5)).toFixed(2);
-  let COST_GPS_STATION1 = COST_GPS_STATION;
-  COST_GPS_STATION1+=5; 
+  //let COST_GPS_STATION1 = COST_GPS_STATION;
+  const COST_GPS_STATION1=obj.COST_GPS_STATION; 
   const debug = w.addText(
     `GPS：${COST_GPS_STATION1} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
