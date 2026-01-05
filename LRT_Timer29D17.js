@@ -196,8 +196,48 @@ if (config.runsInWidget || SILENT_RUN) {
   distanceText.textColor = new Color("#000000");
   w.addSpacer(4);
 
+  if (isClosed) {
+    const warn = w.addText("\n⚠️ 本日營運已結束 \n（每日首班約06:00，末班約00:31）");
+    warn.font = Font.boldSystemFont(18);
+    warn.textColor = new Color("#FF3B30");
+  } else if (trainList.length) {
+    trainList.slice(0, 2).forEach(t => {
+      // 方向行（可上色）
+      const dir = w.addText(`\n🚆 ${t.direction}`);
+      dir.font = Font.boldSystemFont(16);
+      if (t.direction.includes("紅樹林")){
+        dir.textColor = new Color("#FF3B30");
+        dir.font = Font.boldSystemFont(16);   
+      }else if (t.direction.includes("崁頂")){
+        dir.textColor = new Color("#1AA34A");
+        dir.font = Font.boldSystemFont(16); 
+      }else if (t.direction.includes("淡水漁人碼頭")){
+        dir.textColor = new Color("#007AFF");
+        dir.font = Font.boldSystemFont(16);
+      }else{
+        dir.textColor = Color.black();
+        dir.font = Font.boldSystemFont(16);
+      }
+      // 狀態行
+      const st = w.addText(t.statusLine);
+      st.font = Font.systemFont(14);
+      st.textColor = Color.black();
+
+      w.addSpacer(4);
+    });
+  } else {
+    const warn1 = w.addText("⚠️ 暫無列車");
+    warn1.font = Font.boldSystemFont(16);
+    warn1.textColor = new Color("#FF0000");
+  }
+
   const cost = ((Date.now() - t0) / 1000).toFixed(2);
-  w.addText(`⏱️ ${cost}s  ${VERSION}`).font = Font.systemFont(12);
+  const footer = w.addText(`\n⏱️ 查詢耗時 ${cost} 秒 \n  ${SCRIPT_NAME} ${VERSION}`);
+  footer.font = Font.systemFont(14);
+  footer.textColor = Color.black();
+
+  //const cost = ((Date.now() - t0) / 1000).toFixed(2);
+  //w.addText(`⏱️ ${cost}s  ${VERSION}`).font = Font.systemFont(12);
 
   w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
 
