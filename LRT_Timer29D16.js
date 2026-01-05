@@ -74,15 +74,15 @@ const gpsData = trainRes?.data?.gpsData ?? [];
 // ======================== 方向文字 ========================
 function getDirectionLabel(index, routeId) {
   if (index === 0) {
-    if (routeId === 3) return    "往 崁頂        🟢 ⬆️";
+    if (routeId === 3) return    "往 崁頂         🟢 ⬆️";
     if (routeId === 4) return    "往 淡水漁人碼頭 🔵 ⬆️";
-  } else if (index === 1) return "往 崁頂        🟢 ⬆️";
+  } else if (index === 1) return "往 崁頂         🟢 ⬆️";
   else if (index === 2) return   "往 淡水漁人碼頭 🔵 ⬆️";
-  else if (index === 3) return   "往 紅樹林    🟢 ⬇️";
-  else if (index === 4) return   "往 紅樹林    🔵 ⬇️";
+  else if (index === 3) return   "往 紅樹林       🟢 ⬇️";
+  else if (index === 4) return   "往 紅樹林       🔵 ⬇️";
   else if (index === 5) {
-    if (routeId === 3) return    "往 紅樹林    🟢 ⬇️";
-    if (routeId === 4) return    "往 紅樹林    🔵 ⬇️";
+    if (routeId === 3) return    "往 紅樹林       🟢 ⬇️";
+    if (routeId === 4) return    "往 紅樹林       🔵 ⬇️";
   }
   return "未知方向";
 }
@@ -130,8 +130,8 @@ gpsData.forEach((block, idx) => {
     sec,
     direction,
     statusLine: car
-      ? `${car}    ｜\n ${status}`
-      : `列車未進站｜\n ${status}`
+      ? `車號:${car}    ｜\n ${status}`
+      : `車號:列車未進站｜\n ${status}`
   });
 });
 trainList.sort((a, b) => a.sec - b.sec);
