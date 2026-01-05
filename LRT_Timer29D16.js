@@ -74,9 +74,9 @@ const gpsData = trainRes?.data?.gpsData ?? [];
 // ======================== 方向文字 ========================
 function getDirectionLabel(index, routeId) {
   if (index === 0) {
-    if (routeId === 3) return    "往 崁頂         🟢 ⬆️";
+    if (routeId === 3) return    "往 崁頂          🟢 ⬆️";
     if (routeId === 4) return    "往 淡水漁人碼頭 🔵 ⬆️";
-  } else if (index === 1) return "往 崁頂         🟢 ⬆️";
+  } else if (index === 1) return "往 崁頂          🟢 ⬆️";
   else if (index === 2) return   "往 淡水漁人碼頭 🔵 ⬆️";
   else if (index === 3) return   "往 紅樹林       🟢 ⬇️";
   else if (index === 4) return   "往 紅樹林       🔵 ⬇️";
