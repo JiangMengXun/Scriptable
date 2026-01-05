@@ -1,7 +1,7 @@
 /*****************************************************************
  * 🚈 LRT_Timer2 v3.3.1 FINAL STABLE (Silent Widget Edition)
  *****************************************************************/
-
+const BOOT_TIME = Date.now();
 const SCRIPT_NAME = "LRT_Timer29D17";
 const VERSION = "v3.3.1";
 
@@ -229,12 +229,12 @@ if (config.runsInWidget || SILENT_RUN) {
   footer.font = Font.systemFont(14);
   footer.textColor = Color.black();
 
-  w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
-  //console.log(`🏁 程式總耗時0：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
-  const cost1 = ((Date.now() - t0) / 1000).toFixed(2);
-  const footer1 = w.addText(`\n⏱️ 查詢耗時 ${cost1} 秒`);
+  const totalCost = ((Date.now() - BOOT_TIME) / 1000).toFixed(2);
+  const footer1 = w.addText(`\n⏱️ 查詢耗時 ${totalCost} 秒`);
   footer1.font = Font.systemFont(14);
   footer1.textColor = Color.black();
+
+  w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
   
   Script.setWidget(w);
 
