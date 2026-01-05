@@ -283,7 +283,7 @@ if (config.runsInWidget || SILENT_RUN) {
   //let COST_GPS_STATION1 = COST_GPS_STATION;
   const COST_GPS_STATION1=obj.COST_GPS_STATION; 
   const debug = w.addText(
-    `GPS：${COST_GPS_STATION1} s  API：${COST_API}s\n` +
+    `GPS：${obj.COST_GPS_STATION} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
     `TOTAL：${TOTAL_COST}s`
   );
