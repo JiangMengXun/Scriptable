@@ -252,7 +252,7 @@ if (config.runsInWidget || SILENT_RUN) {
   const cost = ((Date.now() - t0) / 1000).toFixed(2);
   const cost1 = COST_GPS_STATION+COST_API+COST_PARSE;
   console.log(`⏱️ Widget 區塊結束時耗時：${cost} 秒`);
-  const footer = w.addText(`\n⏱️ 查詢耗時 ${cost} 秒 \n 🏁 程式總耗時：${cost1} 秒\n  ${SCRIPT_NAME} ${VERSION}`);
+  const footer = w.addText(`\n⏱️ 查詢耗時 ${cost} 秒 \n ${SCRIPT_NAME} ${VERSION}`);
   footer.font = Font.systemFont(14);
   footer.textColor = Color.black();
 
@@ -269,6 +269,9 @@ if (config.runsInWidget || SILENT_RUN) {
     `🧮 整理：${COST_PARSE} 秒\n` +
     `🎨 UI：${COST_UI} 秒`
   );
+  const footer1 = w.addText(`\n🏁 程式總耗時：${TOTAL_COST} 秒`);
+  footer1.font = Font.systemFont(14);
+  footer1.textColor = Color.black();
 
   w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
   Script.setWidget(w);
