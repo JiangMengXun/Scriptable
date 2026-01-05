@@ -269,7 +269,12 @@ if (config.runsInWidget || SILENT_RUN) {
     `🧮 整理：${COST_PARSE} 秒\n` +
     `🎨 UI：${COST_UI} 秒`
   );
-  const footer1 = w.addText(`\n🏁 程式總耗時：${TOTAL_COST} 秒`);
+  const SUM_COST =
+  parseFloat(COST_GPS_STATION) +
+  parseFloat(COST_API) +
+  parseFloat(COST_PARSE) +
+  parseFloat(COST_UI);
+  const footer1 = w.addText(`\n🏁 程式總耗時：${SUM_COST} 秒`);
   footer1.font = Font.systemFont(14);
   footer1.textColor = Color.black();
 
