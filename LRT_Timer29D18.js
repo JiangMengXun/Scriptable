@@ -281,9 +281,10 @@ if (config.runsInWidget || SILENT_RUN) {
   //footer1.textColor = Color.black();
   //const COST_GPS_STATION1=((COST_GPS_STATION+5)).toFixed(2);
   //let COST_GPS_STATION1 = COST_GPS_STATION;
-  const COST_GPS_STATION1=obj.COST_GPS_STATION; 
+  const COST_GPS_STATION1=obj.COST_GPS_STATION;
+  obj.COST_GPS_STATION=obj.COST_GPS_STATION+5;  
   const debug = w.addText(
-    `GPS：${obj.COST_GPS_STATION} s  API：${COST_API}s\n` +
+    `GPS0：${obj.COST_GPS_STATION} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
     `TOTAL：${TOTAL_COST}s`
   );
