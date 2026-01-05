@@ -233,17 +233,10 @@ if (config.runsInWidget || SILENT_RUN) {
   Script.setWidget(w);
 
   // ✅【關鍵 3】立刻結束，不跑任何 UI
-  Script.complete();
+  //Script.complete();
   return;
 }
-  const w1 = new ListWidget();
-  const cost1 = ((Date.now() - t0) / 1000).toFixed(2);
-  const footer1 = w.addText(`\n⏱️ 查詢耗時 ${cost1} 秒 \n  ${SCRIPT_NAME} ${VERSION}`);
-  footer1.font = Font.systemFont(14);
-  footer1.textColor = Color.black();
-  w1.addSpacer(4);
-  Script.setWidget(w1);
-
+  
 // ❌【重要】不再允許任何非 Widget / Notification 行為
 Script.complete();
-//console.log(`🏁 程式總耗時：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
+console.log(`🏁 程式總耗時：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
