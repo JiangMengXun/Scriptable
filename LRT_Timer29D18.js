@@ -18,7 +18,7 @@ const t0 = Date.now();
 
 // ======================== GPS + 車站 ========================
 const tGPS_STATION = Date.now();
-
+console.log(`GPS + 車站`);
 const [loc, stations] = await Promise.all([
   Location.current({ accuracy: 100 }),
   new Request(STATION_JSON_URL).loadJSON()
@@ -35,6 +35,7 @@ const { latitude, longitude } = loc;
 
 // ======================== 距離計算 ========================
 function distance(lat1, lon1, lat2, lon2) {
+  console.log(`距離計算`);
   const R = 6371000;
   const toRad = d => d * Math.PI / 180;
   const dLat = toRad(lat2 - lat1);
@@ -63,7 +64,7 @@ const isClosed = hour >= 1 && hour < 4;
 
 // ======================== API ========================
 const tAPI = Date.now();
-
+console.log(`API`);
 const trainReq = new Request(API_URL);
 trainReq.method = "POST";
 trainReq.headers = {
@@ -83,6 +84,7 @@ console.log(`📡 列車 API 耗時：${COST_API} 秒`);
 
 // ======================== 方向 ========================
 function getDirectionLabel(index, routeId) {
+console.log(`方向`);
   if (index === 0) {
     if (routeId === 3) return "往 崁頂          🟢 ⬆️";
     if (routeId === 4) return "往 淡水漁人碼頭 🔵 ⬆️";
@@ -100,6 +102,7 @@ function getDirectionLabel(index, routeId) {
 //const nowHHMM = new Date().toTimeString().slice(0, 5);
 
 // ======================== 時間格式 ========================
+console.log(`時間格式`);
 function formatTime(sec) {
   const min = Math.round(sec / 60);
   return `約 ${min} 分後進站`;
@@ -108,7 +111,7 @@ const nowHHMM = new Date().toTimeString().slice(0, 5);
 
 // ======================== 列車整理 ========================
 const tPARSE = Date.now();
-
+console.log(`列車整理`);
 const trainList = [];
 gpsData.forEach((block, idx) => {
   const info = block[nearest.train_id];
@@ -157,6 +160,7 @@ console.log(`🧮 列車資料整理耗時：${COST_PARSE} 秒`);
 
 // ======================== Widget ========================
 if (config.runsInWidget || SILENT_RUN) {
+  console.log(`Widget`);
   const tUI = Date.now();
 
   const w = new ListWidget();
@@ -281,12 +285,12 @@ if (config.runsInWidget || SILENT_RUN) {
   //footer1.textColor = Color.black();
   //const COST_GPS_STATION1=(COST_GPS_STATION+5).toFixed(2);
   //let COST_GPS_STATION1 = obj.COST_GPS_STATION;
-  //const COST_GPS_STATION1=obj.COST_GPS_STATION;
+  const COST_GPS_STATION0=obj.COST_GPS_STATION+100;
   obj.COST_GPS_STATION1=COST_GPS_STATION+5;  
   const debug = w.addText(
     `GPS0：${obj.COST_GPS_STATION1} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
-    `TOTAL：${TOTAL_COST}s`
+    `TOTAL：${TOTAL_COST}s` `GPST：${COST_GPS_STATION0} s 
   );
   debug.font = Font.systemFont(11);
   debug.textColor = Color.gray();
