@@ -275,22 +275,13 @@ if (config.runsInWidget || SILENT_RUN) {
     `🧮 整理：${COST_PARSE} 秒\n` +
     `🎨 UI：${COST_UI} 秒`
   );
-  //const SUM_COST =
-  //parseFloat(COST_GPS_STATION) +
-  //parseFloat(COST_API) +
-  //parseFloat(COST_PARSE) +
-  //parseFloat(COST_UI);
-  //const footer1 = w.addText(`\n🏁 程式總耗時P：${SUM_COST} 秒  \n ${SCRIPT_NAME} ${VERSION}`);
-  //footer1.font = Font.systemFont(14);
-  //footer1.textColor = Color.black();
-  //const COST_GPS_STATION1=(COST_GPS_STATION+5).toFixed(2);
-  //let COST_GPS_STATION1 = obj.COST_GPS_STATION;
-  const COST_GPS_STATION0=obj.COST_GPS_STATION+100;
+  
+  const COST_GPS_STATION0=obj.COST_GPS_STATION+20;
   obj.COST_GPS_STATION1=COST_GPS_STATION+5;  
   const debug = w.addText(
     `GPS0：${obj.COST_GPS_STATION1} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
-    `TOTAL：${TOTAL_COST}s  GPST：${COST_GPS_STATION0} s \n`
+    `TOTAL：${TOTAL_COST}s`
   );
   debug.font = Font.systemFont(11);
   debug.textColor = Color.gray();
@@ -302,6 +293,6 @@ if (config.runsInWidget || SILENT_RUN) {
 }
 
 Script.complete();
-console.log(`🏁 程式總耗時：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
+//console.log(`🏁 程式總耗時：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
 console.log(`${obj.COST_GPS_STATION}`);
 console.log(`${obj.COST_GPS_STATION1}`);
