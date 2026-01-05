@@ -262,21 +262,28 @@ if (config.runsInWidget || SILENT_RUN) {
   const TOTAL_COST =
     ((Date.now() - t0) / 1000).toFixed(2);
 
-  console.log(
-    `🏁 程式總耗時：${TOTAL_COST} 秒\n` +
-    `📍 GPS+Stations：${COST_GPS_STATION} 秒\n` +
-    `📡 API：${COST_API} 秒\n` +
-    `🧮 整理：${COST_PARSE} 秒\n` +
-    `🎨 UI：${COST_UI} 秒`
+  //console.log(
+  //  `🏁 程式總耗時：${TOTAL_COST} 秒\n` +
+ //   `📍 GPS+Stations：${COST_GPS_STATION} 秒\n` +
+  //  `📡 API：${COST_API} 秒\n` +
+ //   `🧮 整理：${COST_PARSE} 秒\n` +
+  //  `🎨 UI：${COST_UI} 秒`
+  //);
+  //const SUM_COST =
+  //parseFloat(COST_GPS_STATION) +
+  //parseFloat(COST_API) +
+  //parseFloat(COST_PARSE) +
+  //parseFloat(COST_UI);
+  //const footer1 = w.addText(`\n🏁 程式總耗時P：${SUM_COST} 秒`);
+  //footer1.font = Font.systemFont(14);
+  //footer1.textColor = Color.black();
+  const debug = w.addText(
+    `GPS：${COST_GPS_STATION}s  API：${COST_API}s\n` +
+    `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
+    `TOTAL：${TOTAL_COST}s`
   );
-  const SUM_COST =
-  parseFloat(COST_GPS_STATION) +
-  parseFloat(COST_API) +
-  parseFloat(COST_PARSE) +
-  parseFloat(COST_UI);
-  const footer1 = w.addText(`\n🏁 程式總耗時：${SUM_COST} 秒`);
-  footer1.font = Font.systemFont(14);
-  footer1.textColor = Color.black();
+  debug.font = Font.systemFont(11);
+  debug.textColor = Color.gray();
 
   w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
   Script.setWidget(w);
@@ -285,4 +292,4 @@ if (config.runsInWidget || SILENT_RUN) {
 }
 
 Script.complete();
-console.log(`🏁 程式總耗時：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
+console.log(`🏁 程式總耗時E：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
