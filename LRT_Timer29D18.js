@@ -279,10 +279,10 @@ if (config.runsInWidget || SILENT_RUN) {
   //const footer1 = w.addText(`\n🏁 程式總耗時P：${SUM_COST} 秒  \n ${SCRIPT_NAME} ${VERSION}`);
   //footer1.font = Font.systemFont(14);
   //footer1.textColor = Color.black();
-  //const COST_GPS_STATION1=((COST_GPS_STATION+5)).toFixed(2);
+  //const COST_GPS_STATION1=(COST_GPS_STATION+5).toFixed(2);
   //let COST_GPS_STATION1 = COST_GPS_STATION;
   //const COST_GPS_STATION1=obj.COST_GPS_STATION;
-  obj.COST_GPS_STATION1=obj.COST_GPS_STATION+5;  
+  ${obj.COST_GPS_STATION1}=${(COST_GPS_STATION+5).toFixed(2)};  
   const debug = w.addText(
     `GPS0：${obj.COST_GPS_STATION1} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
