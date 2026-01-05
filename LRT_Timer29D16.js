@@ -140,7 +140,7 @@ trainList.sort((a, b) => a.sec - b.sec);
 if (config.runsInWidget) {
   const w = new ListWidget();
   w.backgroundColor = Color.white();
-  w.url = "scriptable:///run?scriptName=LRT_Timer29D16&silent=true";
+  //w.url = "scriptable:///run?scriptName=LRT_Timer29D16&silent=true";
 
   const title = w.addText("🚈 淡海輕軌列車動態");
   title.font = Font.boldSystemFont(22);
@@ -236,6 +236,7 @@ if (config.runsInWidget) {
   footer.textColor = Color.black();
 
   w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
+  w.url = "scriptable:///run?scriptName=LRT_Timer29D16&silent=true";
   Script.setWidget(w);
   Script.complete();
   return;
