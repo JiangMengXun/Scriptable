@@ -79,6 +79,55 @@ function getDirectionLabel(index, routeId) {
   return "未知方向";
 }
 
+// ======================== 時間格式 ========================
+function formatTime(sec) {
+  const min = Math.round(sec / 60);
+  return `約 ${min} 分後進站`;
+}
+const nowHHMM = new Date().toTimeString().slice(0, 5);
+
+// ======================== 整理列車清單 ========================
+const trainList = [];
+gpsData.forEach((block, idx) => {
+  const info = block[nearest.train_id];
+  if (!info || typeof info.time !== "number") return;
+
+  const sec = info.time;
+  if (sec > 1800) return;
+
+  const hhmm = info.drivingTime ?? "--:--";
+  const direction = getDirectionLabel(idx, info.routeId);
+  const car = info.carNum ? `${info.carNum}車` : "";
+
+  let status = "";
+  const isSpecial = ["V11", "V01", "V26"].includes(nearest.train_id);
+  const isSameTime = hhmm === nowHHMM;
+
+  if ((info.drivingTime === "-" && info.carNum) ||
+      (info.drivingTime === "-" && info.carNum === "" && sec === -1)) {
+    status = "距離到站:列車未有發車資訊｜發車時間:--:--";
+  } else if (isSpecial && sec === 0) {
+    status = isSameTime
+      ? `距離到站：即將發車｜發車時間：${hhmm}`
+      : `距離到站：等候發車｜發車時間：${hhmm}`;
+  } else if (sec === 0) {
+    status = `距離到站：已到站｜發車時間：${hhmm}`;
+  } else if (sec <= 60) {
+    status = `距離到站：即將進站｜發車時間：${hhmm}`;
+  } else {
+    status = `距離到站：${formatTime(sec)}｜發車時間：${hhmm}`;
+  }
+
+  trainList.push({
+    sec,
+    direction,
+    statusLine: car
+      ? `車號：${car}    \n${status}`
+      : `車號：列車未進站\n${status}`
+  });
+});
+trainList.sort((a, b) => a.sec - b.sec);
+
 // ======================== Widget ========================
 if (config.runsInWidget || SILENT_RUN) {
   const w = new ListWidget();
@@ -89,13 +138,63 @@ if (config.runsInWidget || SILENT_RUN) {
 
   const title = w.addText("🚈 淡海輕軌列車動態");
   title.font = Font.boldSystemFont(22);
+  title.textColor = Color.black();
+  w.addSpacer(4);
 
-  const station = w.addText(
-    `📍 最近車站：${nearest.train_id} ${nearest.station_name}站`
+  const timeText = w.addText(
+    `🕒 更新時間：${new Date().toTimeString().slice(0, 8)}\n`
   );
-  station.font = Font.boldSystemFont(16);
+  timeText.font = Font.systemFont(14);
+  timeText.textColor = Color.gray();
+  w.addSpacer(6);
 
-  w.addText(`📏 距離：約 ${distM} 公尺`);
+  //const station = w.addText(
+  //  `📍 最近車站：${nearest.train_id} ${nearest.station_name}站`
+  //);
+  //station.font = Font.boldSystemFont(16);
+
+  //w.addText(`📏 距離：約 ${distM} 公尺`);
+
+  // ===== 最近車站（同一行）=====
+   const stationRow = w.addStack();
+   stationRow.layoutHorizontally();
+   stationRow.centerAlignContent();
+
+   // 左邊固定文字
+   const stationLabel = stationRow.addText("📍 最近車站：");
+   stationLabel.font = Font.boldSystemFont(16);
+   stationLabel.textColor = Color.black();
+
+   // 判斷車站代碼顏色
+   let stationColor = Color.black();
+   const tid = nearest.train_id;
+
+   // V01 ~ V11 → 綠色
+   if (/^V(0[1-9]|1[0-1])$/.test(tid)) {
+     stationColor = new Color("#1AA34A");
+   }
+   // V26 ~ V28 → 藍色
+   else if (/^V2[6-8]$/.test(tid)) {
+     stationColor = new Color("#007AFF");
+   }
+
+   // 右邊：車站代碼 + 名稱（同一行）
+   const stationName = stationRow.addText(
+     ` ${nearest.train_id} ${nearest.station_name}站`
+   );
+   stationName.font = Font.boldSystemFont(16);
+   stationName.textColor = stationColor;
+
+   w.addSpacer(6);
+
+
+  // ===== 距離=====
+  const distanceText = w.addText(
+    `📏 距離：約 ${distM} 公尺`
+  );
+  distanceText.font = Font.boldSystemFont(16);
+  distanceText.textColor = new Color("#000000");
+  w.addSpacer(4);
 
   const cost = ((Date.now() - t0) / 1000).toFixed(2);
   w.addText(`⏱️ ${cost}s  ${VERSION}`).font = Font.systemFont(12);
