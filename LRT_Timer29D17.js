@@ -148,13 +148,6 @@ if (config.runsInWidget || SILENT_RUN) {
   timeText.textColor = Color.gray();
   w.addSpacer(6);
 
-  //const station = w.addText(
-  //  `📍 最近車站：${nearest.train_id} ${nearest.station_name}站`
-  //);
-  //station.font = Font.boldSystemFont(16);
-
-  //w.addText(`📏 距離：約 ${distM} 公尺`);
-
   // ===== 最近車站（同一行）=====
    const stationRow = w.addStack();
    stationRow.layoutHorizontally();
@@ -236,9 +229,6 @@ if (config.runsInWidget || SILENT_RUN) {
   footer.font = Font.systemFont(14);
   footer.textColor = Color.black();
 
-  //const cost = ((Date.now() - t0) / 1000).toFixed(2);
-  //w.addText(`⏱️ ${cost}s  ${VERSION}`).font = Font.systemFont(12);
-
   w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
 
   Script.setWidget(w);
@@ -250,3 +240,4 @@ if (config.runsInWidget || SILENT_RUN) {
 
 // ❌【重要】不再允許任何非 Widget / Notification 行為
 Script.complete();
+console.log(`🏁 程式總耗時：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
