@@ -299,3 +299,4 @@ if (config.runsInWidget || SILENT_RUN) {
 
 Script.complete();
 console.log(`🏁 程式總耗時E：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
+console.log(`${obj.COST_GPS_STATION}`);
