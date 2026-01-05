@@ -130,7 +130,7 @@ gpsData.forEach((block, idx) => {
     sec,
     direction,
     statusLine: car
-      ? `${car}｜\n ${status}`
+      ? `${car}    ｜\n ${status}`
       : `列車未進站｜\n ${status}`
   });
 });
