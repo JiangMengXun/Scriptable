@@ -143,7 +143,7 @@ if (config.runsInWidget) {
   w.url = "scriptable:///run?scriptName=LRT_Timer29D16&silent=true";
 
   const title = w.addText("🚈 淡海輕軌列車動態");
-  title.font = Font.boldSystemFont(24);
+  title.font = Font.boldSystemFont(22);
   title.textColor = Color.black();
   w.addSpacer(4);
 
