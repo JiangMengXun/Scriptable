@@ -282,9 +282,9 @@ if (config.runsInWidget || SILENT_RUN) {
   //const COST_GPS_STATION1=((COST_GPS_STATION+5)).toFixed(2);
   //let COST_GPS_STATION1 = COST_GPS_STATION;
   const COST_GPS_STATION1=obj.COST_GPS_STATION;
-  obj.COST_GPS_STATION=obj.COST_GPS_STATION+5;  
+  obj.COST_GPS_STATION1=((obj.COST_GPS_STATION+5)).toFixed(2);  
   const debug = w.addText(
-    `GPS0：${obj.COST_GPS_STATION} s  API：${COST_API}s\n` +
+    `GPS0：${obj.COST_GPS_STATION1} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
     `TOTAL：${TOTAL_COST}s`
   );
@@ -300,3 +300,4 @@ if (config.runsInWidget || SILENT_RUN) {
 Script.complete();
 console.log(`🏁 程式總耗時E：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
 console.log(`${obj.COST_GPS_STATION}`);
+console.log(`${obj.COST_GPS_STATION1}`);
