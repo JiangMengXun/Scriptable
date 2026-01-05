@@ -230,7 +230,7 @@ if (config.runsInWidget || SILENT_RUN) {
   footer.textColor = Color.black();
 
   w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
-
+  console.log(`🏁 程式總耗時0：${((Date.now() - t0) / 1000).toFixed(2)} 秒`);
   Script.setWidget(w);
 
   // ✅【關鍵 3】立刻結束，不跑任何 UI
