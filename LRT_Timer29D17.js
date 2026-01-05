@@ -224,7 +224,7 @@ if (config.runsInWidget || SILENT_RUN) {
   }
 
   const cost = ((Date.now() - t0) / 1000).toFixed(2);
-  console.log(`🏁 程式總耗時0：${cost} 秒`);
+  console.log(`⏱️ Widget 區塊結束時耗時：${cost} 秒`);
   const footer = w.addText(`\n⏱️ 查詢耗時 ${cost} 秒 \n  ${SCRIPT_NAME} ${VERSION}`);
   footer.font = Font.systemFont(14);
   footer.textColor = Color.black();
