@@ -130,8 +130,8 @@ gpsData.forEach((block, idx) => {
     sec,
     direction,
     statusLine: car
-      ? `車號:${car}    ｜\n ${status}`
-      : `車號:列車未進站｜\n ${status}`
+      ? `車號:${car}    ｜\n${status}`
+      : `車號:列車未進站｜\n${status}`
   });
 });
 trainList.sort((a, b) => a.sec - b.sec);
