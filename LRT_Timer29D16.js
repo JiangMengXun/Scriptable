@@ -161,7 +161,7 @@ if (config.runsInWidget) {
 
    // 左邊固定文字
    const stationLabel = stationRow.addText("📍 最近車站：");
-   stationLabel.font = Font.boldSystemFont(18);
+   stationLabel.font = Font.boldSystemFont(16);
    stationLabel.textColor = Color.black();
 
    // 判斷車站代碼顏色
@@ -181,7 +181,7 @@ if (config.runsInWidget) {
    const stationName = stationRow.addText(
      ` ${nearest.train_id} ${nearest.station_name}站`
    );
-   stationName.font = Font.boldSystemFont(18);
+   stationName.font = Font.boldSystemFont(16);
    stationName.textColor = stationColor;
 
    w.addSpacer(6);
