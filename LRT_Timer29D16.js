@@ -113,17 +113,17 @@ gpsData.forEach((block, idx) => {
 
   if ((info.drivingTime === "-" && info.carNum) ||
       (info.drivingTime === "-" && info.carNum === "" && sec === -1)) {
-    status = "列車未有發車資訊";
+    status = "距離到站:列車未有發車資訊｜發車時間:NA";
   } else if (isSpecial && sec === 0) {
     status = isSameTime
-      ? `即將發車｜發車時間:${hhmm}`
-      : `等候發車｜發車時間:${hhmm}`;
+      ? `距離到站:即將發車｜發車時間:${hhmm}`
+      : `距離到站:等候發車｜發車時間:${hhmm}`;
   } else if (sec === 0) {
-    status = `已到站｜發車時間:${hhmm}`;
+    status = `距離到站:已到站｜發車時間:${hhmm}`;
   } else if (sec <= 60) {
-    status = `即將進站｜發車時間:${hhmm}`;
+    status = `距離到站:即將進站｜發車時間:${hhmm}`;
   } else {
-    status = `${formatTime(sec)}｜發車時間:${hhmm}`;
+    status = `距離到站:${formatTime(sec)}｜發車時間:${hhmm}`;
   }
 
   trainList.push({
