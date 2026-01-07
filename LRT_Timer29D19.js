@@ -280,11 +280,12 @@ if (config.runsInWidget || SILENT_RUN) {
   
   const COST_GPS_STATION0=Number(obj.COST_GPS_STATION)|| 0;
   const result = COST_GPS_STATION0 + 5.0;
-  obj.COST_GPS_STATION1=COST_GPS_STATION+5;  
+  obj.COST_GPS_STATION1=COST_GPS_STATION+5; 
+  const COST_GPS_STATION20=Number(obj.COST_GPS_STATION2)|| 0; 
   const debug = w.addText(
     `GPS0：${result.toFixed(2)} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
-    `TOTAL：${TOTAL_COST}s  GPS0：${result.toFixed(2)} s`
+    `TOTAL：${TOTAL_COST}s  GPS0：${COST_GPS_STATION20.toFixed(2)} s`
   );
   debug.font = Font.systemFont(11);
   debug.textColor = Color.gray();
