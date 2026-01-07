@@ -18,7 +18,6 @@ const t0 = Date.now();
 
 // ======================== GPS + 車站 ========================
 const tGPS_STATION = Date.now();
-const tGPS_STATION1 = Date.now();
 console.log("GPS + 車站");
 const [loc, stations] = await Promise.all([
   Location.current({ accuracy: 100 }),
@@ -28,7 +27,7 @@ const [loc, stations] = await Promise.all([
 const COST_GPS_STATION =
   ((Date.now() - tGPS_STATION) / 1000).toFixed(2);
 
-obj.COST_GPS_STATION2 = (Date.now() - tGPS_STATION1) / 1000;
+obj.COST_GPS_STATION = ((Date.now() - tGPS_STATION) / 1000).toFixed(2);
 
 console.log(`📍 GPS + Stations 耗時：${COST_GPS_STATION} 秒`);
 
@@ -279,12 +278,11 @@ if (config.runsInWidget || SILENT_RUN) {
   
   const COST_GPS_STATION0=Number(obj.COST_GPS_STATION)|| 0;
   const result = COST_GPS_STATION0 + 5.0;
-  //const COST_GPS_STATION2=Number(obj.COST_GPS_STATION2)|| 0  
   obj.COST_GPS_STATION1=COST_GPS_STATION+5;  
   const debug = w.addText(
     `GPS0：${obj.COST_GPS_STATION1} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
-    `TOTAL：${TOTAL_COST}s  GPS0：${result.toFixed(2)} s\n`
+    `TOTAL：${TOTAL_COST}s  GPS0：${result.toFixed(2)} s`
   );
   debug.font = Font.systemFont(11);
   debug.textColor = Color.gray();
@@ -309,4 +307,3 @@ console.log(
   );*/
 console.log(`${obj.COST_GPS_STATION}`);
 console.log(`${obj.COST_GPS_STATION1}`);
-console.log(`${obj.COST_GPS_STATION2.toFixed(2)}`);
