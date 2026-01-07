@@ -290,6 +290,7 @@ if (config.runsInWidget || SILENT_RUN) {
   const COST_tAPI20=Number(obj.COST_tAPI2)|| 0;
   const COST_tPARSE20=Number(obj.COST_tPARSE2)|| 0;  
   const result20=COST_GPS_STATION20+COST_tAPI20+COST_tPARSE20+5.0;
+  obj.TOTAL1=result20;
   const debug = w.addText(
     `GPS0：${result.toFixed(2)} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
@@ -319,4 +320,4 @@ console.log(
   );*/
 console.log(`${obj.COST_GPS_STATION}`);
 console.log(`${obj.COST_GPS_STATION1}`);
-console.log(`${result20.toFixed(2)}`);
+console.log(`${obj.TOTAL1.toFixed(2)}`);
