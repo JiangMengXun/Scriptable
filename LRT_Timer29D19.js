@@ -36,8 +36,9 @@ console.log(`📍 GPS + Stations 耗時：${COST_GPS_STATION} 秒`);
 const { latitude, longitude } = loc;
 
 // ======================== 距離計算 ========================
+console.log("距離計算");
 function distance(lat1, lon1, lat2, lon2) {
-  console.log("距離計算");
+  
   const R = 6371000;
   const toRad = d => d * Math.PI / 180;
   const dLat = toRad(lat2 - lat1);
@@ -85,8 +86,9 @@ const COST_API =
 console.log(`📡 列車 API 耗時：${COST_API} 秒`);
 
 // ======================== 方向 ========================
-function getDirectionLabel(index, routeId) {
 console.log("方向");
+function getDirectionLabel(index, routeId) {
+
   if (index === 0) {
     if (routeId === 3) return "往 崁頂          🟢 ⬆️";
     if (routeId === 4) return "往 淡水漁人碼頭 🔵 ⬆️";
@@ -282,6 +284,7 @@ if (config.runsInWidget || SILENT_RUN) {
   const result = COST_GPS_STATION0 + 5.0;
   obj.COST_GPS_STATION1=COST_GPS_STATION+5; 
   const COST_GPS_STATION20=Number(obj.COST_GPS_STATION2)|| 0; 
+  
   const debug = w.addText(
     `GPS0：${result.toFixed(2)} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
