@@ -283,9 +283,9 @@ if (config.runsInWidget || SILENT_RUN) {
   
   obj.COST_GPS_STATION1=COST_GPS_STATION+5;  
   const debug = w.addText(
-    `GPS0：${result.toFixed(2)} s  API：${COST_API}s\n` +
+    `GPS0：${obj.COST_GPS_STATION1} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
-    `TOTAL：${TOTAL_COST}s  GPS0：${COST_GPS_STATION2.toFixed(2)} s\n`
+    `TOTAL：${TOTAL_COST}s  GPS0：${result.toFixed(2)} s\n`
   );
   debug.font = Font.systemFont(11);
   debug.textColor = Color.gray();
