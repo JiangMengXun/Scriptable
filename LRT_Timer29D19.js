@@ -279,8 +279,7 @@ if (config.runsInWidget || SILENT_RUN) {
   
   const COST_GPS_STATION0=Number(obj.COST_GPS_STATION)|| 0;
   const result = COST_GPS_STATION0 + 5.0;
-  const COST_GPS_STATION2=Number(obj.COST_GPS_STATION2)|| 0
-  
+  //const COST_GPS_STATION2=Number(obj.COST_GPS_STATION2)|| 0  
   obj.COST_GPS_STATION1=COST_GPS_STATION+5;  
   const debug = w.addText(
     `GPS0：${obj.COST_GPS_STATION1} s  API：${COST_API}s\n` +
