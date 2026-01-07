@@ -67,6 +67,7 @@ const isClosed = hour >= 1 && hour < 4;
 
 // ======================== API ========================
 const tAPI = Date.now();
+const tAPI2 = Date.now();
 console.log("API");
 const trainReq = new Request(API_URL);
 trainReq.method = "POST";
@@ -82,7 +83,7 @@ const gpsData = trainRes?.data?.gpsData ?? [];
 
 const COST_API =
   ((Date.now() - tAPI) / 1000).toFixed(2);
-
+obj.COST_tAPI2 = (Date.now() - tAPI2) / 1000;
 console.log(`📡 列車 API 耗時：${COST_API} 秒`);
 
 // ======================== 方向 ========================
@@ -115,6 +116,7 @@ const nowHHMM = new Date().toTimeString().slice(0, 5);
 
 // ======================== 列車整理 ========================
 const tPARSE = Date.now();
+const tPARSE2 = Date.now();
 console.log("列車整理");
 const trainList = [];
 gpsData.forEach((block, idx) => {
@@ -159,6 +161,7 @@ trainList.sort((a, b) => a.sec - b.sec);
 
 const COST_PARSE =
   ((Date.now() - tPARSE) / 1000).toFixed(3);
+obj.COST_tPARSE2 = (Date.now() - tPARSE2) / 1000;
 
 console.log(`🧮 列車資料整理耗時：${COST_PARSE} 秒`);
 
@@ -283,12 +286,15 @@ if (config.runsInWidget || SILENT_RUN) {
   const COST_GPS_STATION0=Number(obj.COST_GPS_STATION)|| 0;
   const result = COST_GPS_STATION0 + 5.0;
   obj.COST_GPS_STATION1=COST_GPS_STATION+5; 
-  const COST_GPS_STATION20=Number(obj.COST_GPS_STATION2)|| 0; 
-  
+  const COST_GPS_STATION20=Number(obj.COST_GPS_STATION2)|| 0;
+  const COST_tAPI20=Number(obj.COST_tAPI2)|| 0;
+  const COST_tPARSE20=Number(obj.COST_tPARSE2)|| 0;  
+  const result20=COST_GPS_STATION20+COST_tAPI20+COST_tPARSE20;
   const debug = w.addText(
     `GPS0：${result.toFixed(2)} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
-    `TOTAL：${TOTAL_COST}s  GPS0：${COST_GPS_STATION20.toFixed(2)} s`
+    `TOTAL：${TOTAL_COST}s  GPS0：${COST_GPS_STATION20.toFixed(2)} s`+
+    `TOTAL1：${result20.toFixed(2)} s`
   );
   debug.font = Font.systemFont(11);
   debug.textColor = Color.gray();
