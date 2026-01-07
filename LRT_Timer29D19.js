@@ -85,6 +85,7 @@ const COST_API =
   ((Date.now() - tAPI) / 1000).toFixed(2);
 obj.COST_tAPI2 = (Date.now() - tAPI2) / 1000;
 console.log(`📡 列車 API 耗時：${COST_API} 秒`);
+console.log(`📡 列車 API 耗時1：${obj.COST_tAPI2} 秒`);
 
 // ======================== 方向 ========================
 console.log("方向");
