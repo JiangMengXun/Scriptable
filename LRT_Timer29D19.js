@@ -319,3 +319,4 @@ console.log(
   );*/
 console.log(`${obj.COST_GPS_STATION}`);
 console.log(`${obj.COST_GPS_STATION1}`);
+console.log(`${result20.toFixed(2)}`);
