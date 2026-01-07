@@ -18,6 +18,7 @@ const t0 = Date.now();
 
 // ======================== GPS + 車站 ========================
 const tGPS_STATION = Date.now();
+const tGPS_STATION1 = Date.now();
 console.log("GPS + 車站");
 const [loc, stations] = await Promise.all([
   Location.current({ accuracy: 100 }),
@@ -27,7 +28,7 @@ const [loc, stations] = await Promise.all([
 const COST_GPS_STATION =
   ((Date.now() - tGPS_STATION) / 1000).toFixed(2);
 
-obj.COST_GPS_STATION2 = (Date.now() - tGPS_STATION) / 1000;
+obj.COST_GPS_STATION2 = (Date.now() - tGPS_STATION1) / 1000;
 
 console.log(`📍 GPS + Stations 耗時：${COST_GPS_STATION} 秒`);
 
@@ -309,4 +310,4 @@ console.log(
   );*/
 console.log(`${obj.COST_GPS_STATION}`);
 console.log(`${obj.COST_GPS_STATION1}`);
-console.log(`${obj.COST_GPS_STATION2}`);
+console.log(`${obj.COST_GPS_STATION2.toFixed(2)}`);
