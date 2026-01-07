@@ -293,7 +293,7 @@ if (config.runsInWidget || SILENT_RUN) {
   const debug = w.addText(
     `GPS0：${result.toFixed(2)} s  API：${COST_API}s\n` +
     `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
-    `TOTAL：${TOTAL_COST}s  GPS0：${COST_GPS_STATION20.toFixed(2)} s`\n+
+    `TOTAL：${TOTAL_COST}s  GPS0：${COST_GPS_STATION20.toFixed(2)} s`+
     `TOTAL1：${result20.toFixed(2)} s`
   );
   debug.font = Font.systemFont(11);
