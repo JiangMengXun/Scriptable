@@ -318,7 +318,7 @@ console.log(
     `🧮 整理：${COST_PARSE} 秒\n` +
     `🎨 UI：${COST_UI} 秒`
   );*/
-const COST_TOTAL10=Number(obj.TOTAL1)|| 0;
+//const COST_TOTAL10=Number(obj.TOTAL1)|| 0;
 console.log(`${obj.COST_GPS_STATION}`);
 console.log(`${obj.COST_GPS_STATION1}`);
-console.log(`${COST_TOTAL10.toFixed(2)}`);
+//console.log(`${COST_TOTAL10.toFixed(2)}`);
