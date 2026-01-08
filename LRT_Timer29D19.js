@@ -298,10 +298,10 @@ if (config.runsInWidget || SILENT_RUN) {
   const result20=COST_GPS_STATION20+COST_tAPI20+COST_tPARSE20+5.0;
   obj.TOTAL1=result20;
   const debug = w.addText(
-    `GPS0：${result.toFixed(2)} s  API：${COST_API}s\n` +
-    `PARSE：${COST_PARSE}s  UI：${COST_UI}s\n` +
-    `TOTAL：${TOTAL_COST}s  GPS0：${COST_GPS_STATION20.toFixed(2)} s`+
-    `TOTAL1：${result20.toFixed(2)} s`
+    `\nGPS0：${result.toFixed(2)} 秒,API：${COST_API} 秒,` +
+    `PARSE：${COST_PARSE} 秒,UI：${COST_UI} 秒\n` +
+    `TOTAL：${TOTAL_COST} 秒,GPS0：${COST_GPS_STATION20.toFixed(2)} 秒`+
+    `TOTAL1：${result20.toFixed(2)} 秒`
   );
   debug.font = Font.systemFont(11);
   debug.textColor = Color.gray();
