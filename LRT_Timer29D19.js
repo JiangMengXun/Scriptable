@@ -92,9 +92,9 @@ console.log("方向");
 function getDirectionLabel(index, routeId) {
 
   if (index === 0) {
-    if (routeId === 3) return    "往 崁頂          🟢 ⬆️";
+    if (routeId === 3) return    "往 崁頂           🟢 ⬆️";
     if (routeId === 4) return    "往 淡水漁人碼頭 🔵 ⬆️";
-  } else if (index === 1) return "往 崁頂          🟢 ⬆️";
+  } else if (index === 1) return "往 崁頂           🟢 ⬆️";
   else if (index === 2) return   "往 淡水漁人碼頭 🔵 ⬆️";
   else if (index === 3) return   "往 紅樹林       🟢 ⬇️";
   else if (index === 4) return   "往 紅樹林       🔵 ⬇️";
@@ -303,7 +303,7 @@ if (config.runsInWidget || SILENT_RUN) {
     `TOTAL：${TOTAL_COST} 秒,GPS0：${COST_GPS_STATION20.toFixed(2)} 秒`+
     `TOTAL1：${result20.toFixed(2)} 秒`
   );
-  debug.font = Font.systemFont(11);
+  debug.font = Font.systemFont(10);
   debug.textColor = Color.gray();
 
   w.refreshAfterDate = new Date(Date.now() + 5 * 60 * 1000);
