@@ -313,14 +313,14 @@ Script.complete();
 console.log(
     `🏁 程式總耗時：${((Date.now() - t0) / 1000).toFixed(2)} 秒\n`
   );
-/*console.log(
+console.log(
     `🏁 程式總耗時：${((Date.now() - t0) / 1000).toFixed(2)} 秒\n` +
     `📍 GPS+Stations：${COST_GPS_STATION} 秒\n` +
     `📡 API：${COST_API} 秒\n` +
     `🧮 整理：${COST_PARSE} 秒\n` +
     `🎨 UI：${COST_UI} 秒`
-  );*/
+  );
 //const COST_TOTAL10=Number(obj.TOTAL1)|| 0;
-console.log(`${obj.COST_GPS_STATION}`);
-console.log(`${obj.COST_GPS_STATION1}`);
+//console.log(`${obj.COST_GPS_STATION}`);
+//console.log(`${obj.COST_GPS_STATION1}`);
 //console.log(`${COST_TOTAL10.toFixed(2)}`);
