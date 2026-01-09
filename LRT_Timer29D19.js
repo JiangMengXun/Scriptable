@@ -228,7 +228,7 @@ if (config.runsInWidget || SILENT_RUN) {
   const distanceText = w.addText(
     `📏 距離：約 ${distM} 公尺`
   );
-  distanceText.font = Font.boldSystemFont(16);
+  distanceText.font = Font.boldSystemFont(14);
   distanceText.textColor = new Color("#000000");
   w.addSpacer(4);
 
